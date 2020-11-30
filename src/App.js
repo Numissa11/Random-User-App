@@ -11,7 +11,6 @@ class App extends React.Component {
     this.state = {
       users: [],
       page: 1,
-      isGender: false,
       urlEnd: 'results=20&seed=abc'
     }
   }
@@ -71,17 +70,11 @@ class App extends React.Component {
     // ----- condition that check if there is no gender, male or female ----/
     if (event === 'male') {
       this.setState({ urlEnd: 'results=20&gender=male', isGender: true })
-      this.paginationNext();
-
-    } if (event === 'female') {
+   
+    } if (event === 'female' ) {
       this.setState({ urlEnd: 'results=20&gender=female', isGender: true })
-    
-
-    } else if (this.state.isGender === false) {
-      this.setState({ urlEnd: 'results=20&seed=abc' })
-      this.paginationNext();
-
-    }
+   
+    } 
 
     //----  API call ----// 
 
