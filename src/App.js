@@ -75,21 +75,18 @@ class App extends React.Component {
   fetchGender = async (event) => {
     console.log('event', event)
 
-    if (event == 'male') {
+    if (event === 'male') {
       this.setState({ urlEnd: 'results=20&gender=male' })
       console.log('male page next', this.state.urlEnd)
 
-    } if (event == 'female') {
+    } if (event === 'female') {
       this.setState({ urlEnd: 'results=20&gender=female' })
 
-    } else if (this.state.isGender == false) {
+    } else if (this.state.isGender === false) {
       this.setState({ urlEnd: 'results=20&seed=abc' })
       this.paginationNext();
       console.log('fonction else if isGender === false')
 
-
-    } else {
-      console.log('nothing')
     }
 
     let url = `https://randomuser.me/api/?page=5&results=10&gender=${event}`;
@@ -143,13 +140,20 @@ class App extends React.Component {
 
 
 
-  paginationNext = async () => {
+  paginationNext = async (event) => {
     (console.log('heyyyyyyyyyyyy'))
     //----API call from page 1 to 20 ----// 
     let page = this.state.page
     let urlEnd = this.state.urlEnd
-    page++
-    this.setState({ page })
+
+    if (event === +1) {
+      page++
+      this.setState({ page })
+    } else if (event === -1) {
+      page--
+      this.setState({ page })
+    }
+
 
     let urlFinal = `https://randomuser.me/api/?page=${page}&${urlEnd}`
     console.log('url END', urlEnd)
@@ -206,6 +210,7 @@ class App extends React.Component {
   }
 
   setNoGender = () => {
+    this.setState({ urlEnd: 'results=20&seed=abc' })
     this.componentDidMount();
   }
 
@@ -213,7 +218,8 @@ class App extends React.Component {
   render() {
     let male = 'male'
     let female = 'female'
-
+    let minus = -1
+    let plus = +1
     return (
       <div className="App">
 
@@ -231,7 +237,8 @@ class App extends React.Component {
               <Container className="card-template">
                 <Row>
 
-                  <Button className='mb-3' variant="light" onClick={() => { this.paginationNext() }}> next </Button>
+                  <Button className='mb-3' variant="light" onClick={() => { this.paginationNext(minus) }}> next </Button>
+                  <Button className='mb-3' variant="light" onClick={() => { this.paginationNext(plus) }}> next </Button>
 
 
                   {this.state.users.map(user => (

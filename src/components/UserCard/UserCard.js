@@ -12,13 +12,7 @@ function UserCard (props) {
                               <p className=''> Name: {props.gender} </p>
 
 
-                              
-                              <p className=''> name: {props.gender} </p>
-                              <p className=''> name: {props.gender} </p>
-                              <p className=''> name: {props.gender} </p>
-                              <p className=''> name: {props.gender} </p>
-
-                              <p className=''> name: {props.gender} </p>
+                            
           
                               </div>
                   </div>
