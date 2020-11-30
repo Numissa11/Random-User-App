@@ -9,7 +9,16 @@ function UserCard (props) {
                         {/* USER CARD */}
 
                               <div className="mt-2">
-                              <h4 className=''> name: {props.gender} </h4>
+                              <p className=''> Name: {props.gender} </p>
+
+
+                              
+                              <p className=''> name: {props.gender} </p>
+                              <p className=''> name: {props.gender} </p>
+                              <p className=''> name: {props.gender} </p>
+                              <p className=''> name: {props.gender} </p>
+
+                              <p className=''> name: {props.gender} </p>
           
                               </div>
                   </div>

@@ -14,7 +14,7 @@ class App extends React.Component {
       isGender: false,
       isFemale: false,
       isMale: false,
-      urlEnd: ''
+      urlEnd: 'results=20&seed=abc'
     }
   }
 
@@ -79,17 +79,18 @@ class App extends React.Component {
       this.setState({ urlEnd: 'results=20&gender=male' })
       console.log('male page next', this.state.urlEnd)
 
-    } else if (event == 'female') {
+    } if (event == 'female') {
       this.setState({ urlEnd: 'results=20&gender=female' })
 
-    } else if (this.state.isGender == true ) {
-      this.setState({ urlEnd: 'results=20&gender=female' })
+    } else if (this.state.isGender == false) {
+      this.setState({ urlEnd: 'results=20&seed=abc' })
+      this.paginationNext();
+      console.log('fonction else if isGender === false')
+
 
     } else {
       console.log('nothing')
     }
-
-
 
     let url = `https://randomuser.me/api/?page=5&results=10&gender=${event}`;
     const response = await axios.get(url)
@@ -143,7 +144,7 @@ class App extends React.Component {
 
 
   paginationNext = async () => {
-
+    (console.log('heyyyyyyyyyyyy'))
     //----API call from page 1 to 20 ----// 
     let page = this.state.page
     let urlEnd = this.state.urlEnd
@@ -151,8 +152,7 @@ class App extends React.Component {
     this.setState({ page })
 
     let urlFinal = `https://randomuser.me/api/?page=${page}&${urlEnd}`
-
-
+    console.log('url END', urlEnd)
 
     const response = await axios.get(urlFinal)
     const cleanArray = response.data.results
@@ -206,7 +206,7 @@ class App extends React.Component {
   }
 
   setNoGender = () => {
-    this.setState({ isGender: false })
+    this.componentDidMount();
   }
 
 
