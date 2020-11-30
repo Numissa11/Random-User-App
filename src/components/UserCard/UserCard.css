@@ -1,0 +1,13 @@
+.mon-image{
+      border-radius: 150px;
+     width: 180px;
+     margin:auto;
+}
+
+.mon-titre{
+      border-bottom: 4px dotted whitesmoke;
+}
+
+.mes-divs{
+      font-size: 23px;
+}

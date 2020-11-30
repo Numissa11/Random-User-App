@@ -149,7 +149,7 @@ class App extends React.Component {
     if (event === +1) {
       page++
       this.setState({ page })
-    } else if (event === -1) {
+    } else if (event === -1 & this.state.page > 1) {
       page--
       this.setState({ page })
     }
@@ -226,29 +226,33 @@ class App extends React.Component {
         {
           this.state.users
             ?
-            (<div>
-              <p>page{this.state.page}</p>
+            (<div className="home-container text-center">
+              <h1 className=" border border-white text-white p-5"> Welcome to Random User! </h1>
+              <p className='text-white font-weight-bold'>page{this.state.page}</p>
 
-              <DropdownButton id="dropdown-basic-button" title="Select Gender">
+              <DropdownButton className=' mb-4 ' id="dropdown-basic-button" variant='secondary' title="Select Gender">
                 <Dropdown.Item onClick={() => { this.setNoGender() }}>All</Dropdown.Item>
                 <Dropdown.Item onClick={() => { this.fetchGender(male) }}>Male</Dropdown.Item>
                 <Dropdown.Item onClick={() => { this.fetchGender(female) }}>Female</Dropdown.Item>
               </DropdownButton>
+
+              <Button className='mb-3' variant="light" onClick={() => { this.paginationNext(minus) }}> next </Button>
+              <Button className='mb-3 ml-3' variant="light" onClick={() => { this.paginationNext(plus) }}> next </Button>
+
               <Container className="card-template">
                 <Row>
 
-                  <Button className='mb-3' variant="light" onClick={() => { this.paginationNext(minus) }}> next </Button>
-                  <Button className='mb-3' variant="light" onClick={() => { this.paginationNext(plus) }}> next </Button>
-
-
                   {this.state.users.map(user => (
-                    <Col sm={6} lg={4}>
+                    <Col lg={6}>
                       <UserCard
                         {...user}
 
                       />
                     </Col>
+
                   ))}
+
+
 
                 </Row>
               </Container>
