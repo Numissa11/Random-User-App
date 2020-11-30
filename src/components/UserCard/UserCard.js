@@ -2,7 +2,7 @@ import React from 'react';
 import './UserCard.css'
 
 function UserCard(props) {
-
+console.log('props', props)
       return (
             <div className="row">
 
